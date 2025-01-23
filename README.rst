@@ -1,14 +1,8 @@
 # Faucet Bot
 
-Este proyecto es un bot de Telegram que permite a los usuarios reclamar tokens de un faucet 
-basado en la red **Story Odyssey**. El bot realiza verificaciones de CAPTCHA, asegura que 
-los usuarios no reclamen tokens múltiples veces en un corto periodo, y maneja las 
-transacciones en la blockchain utilizando Web3.
+Este proyecto es un bot de Telegram que permite a los usuarios reclamar tokens de un faucet basado en la red **Story Odyssey**. El bot realiza verificaciones de CAPTCHA, asegura que los usuarios no reclamen tokens múltiples veces en un corto periodo, y maneja las transacciones en la blockchain utilizando Web3.
 
-
-Aun que el proyecto esta echo para usarse en story, se puede adaptar facil a otras chain
-usando infura, solo tendrias que cambiar la rpc url con la terminacion en tu api key,
-y proporcionar tu api key en el .env
+Aunque el proyecto está hecho para usarse en Story, se puede adaptar fácilmente a otras chains usando Infura. Solo tendrías que cambiar la URL RPC con la terminación de tu API key, y proporcionar tu API key en el archivo `.env`.
 
 ## Requisitos
 
@@ -21,35 +15,71 @@ y proporcionar tu api key en el .env
 
 ## Configuración
 
-1.- Clona este repositorio
+1. **Clona este repositorio**
 
-Primero, clona este repositorio en tu máquina local.
+    Primero, clona este repositorio en tu máquina local:
 
-```bash
-git clone <url_del_repositorio>
-cd faucet-bot
+    ```bash
+    git clone <url_del_repositorio>
+    cd faucet-bot
+    ```
+
+2. **Crea un entorno virtual**
+
+    Es recomendable usar un entorno virtual para gestionar las dependencias del proyecto. Para crear y activar el entorno virtual:
+
+    ```bash
+    python3 -m venv venv
+    source venv/bin/activate  # En Linux/MacOS
+    venv\Scripts\activate  # En Windows
+    ```
+
+3. **Instala las dependencias**
+
+    Instala las dependencias necesarias con Poetry:
+
+    ```bash
+    poetry install
+    ```
+
+    Si no tienes `poetry` instalado, puedes hacerlo mediante:
+
+    ```bash
+    pip install poetry
+    ```
+
+4. **Configura las variables de entorno**
+
+    El bot necesita ciertas variables de entorno para funcionar correctamente. Crea un archivo `.env` en la raíz del proyecto y añade las siguientes variables:
+
+    ```bash
+    INFURA_PROJECT_ID=your_infura_project_id   # Solo si usas algún nodo de Infura
+    TELEGRAM_BOT_TOKEN=your_telegram_bot_token
+    CONTRACT_ADDRESS=your_contract_address  # del token con el que interactuará
+    PRIVATE_KEY=your_private_key
+    ```
+
+    - **INFURA_PROJECT_ID**: Obtén tu ID de proyecto de Infura para conectarte a la red Ethereum.
+    - **TELEGRAM_BOT_TOKEN**: Crea un bot en Telegram y obtén el token. Usa [BotFather](https://core.telegram.org/bots#botfather) para esto.
+    - **CONTRACT_ADDRESS**: La dirección de tu contrato en la blockchain de Story Odyssey.
+    - **PRIVATE_KEY**: La clave privada de la cuenta que va a enviar los tokens.
+
+5. **Ejecutar el bot**
+
+    Una vez todo esté configurado, puedes ejecutar el bot con el siguiente comando:
+
+    ```bash
+    python bot.py
+    ```
+
+## Uso del bot
+
+- **/start**: Muestra un mensaje de bienvenida.
+- **/claim [wallet_address]**: El usuario proporciona una dirección de wallet y recibe un CAPTCHA que debe resolver para reclamar tokens.
+
+## Estructura del Proyecto
 
 
-2.- Crea un entorno virtual
-
-python3 -m venv venv
-source venv/bin/activate  # En Linux/MacOS
-venv\Scripts\activate  # En Windows
-
-
-
-3.-Instala las dependencias
-poetry install
-(Si no tienes poetry instalado usa "pip install poetry")
-
-4.- Configura las variables de entorno
-INFURA_PROJECT_ID=your_infura_project_id   #Solo si usas algun nodo de infura
-TELEGRAM_BOT_TOKEN=your_telegram_bot_token
-CONTRACT_ADDRESS=your_contract_address  #del token con el que interactuara
-PRIVATE_KEY=your_private_key
-
-5.- Ejecutar el bot
-python bot.py
 
 
 
