@@ -1,0 +1,19 @@
+[tool.poetry]
+name = "faucet-bot"
+version = "0.1.0"
+description = ""
+authors = ["0xAnkhz <ankhzgamer@gmail.com>"]
+
+[tool.poetry.dependencies]
+python = "^3.10"
+web3 = "5.29.0"
+python-telegram-bot = "^21.10"
+python-dotenv = "^1.0.1"
+pillow = "^11.1.0"
+
+[tool.poetry.dev-dependencies]
+pytest = "^5.2"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
